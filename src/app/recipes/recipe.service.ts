@@ -10,24 +10,30 @@ export class RecipeService{
 
     constructor(private shoppingListService: ShoppingListService){}
 
-    private recipes: Recipe[] = [
-        new Recipe(
-            "Test recipe",
-            "This is simply a test",
-            "https://thebrilliantkitchen.com/wp-content/uploads/2023/02/Crockpot-Keto-Meatloaf-1.jpeg.webp",
-            [
-                new Ingredient('Meat', 1),
-                new Ingredient('French fries', 20),
-            ]),
-        new Recipe(
-            "Another Test recipe",
-            "This is simply a test",
-            "https://thebrilliantkitchen.com/wp-content/uploads/2023/02/Crockpot-Keto-Meatloaf-1.jpeg.webp",
-            [
-                new Ingredient('Buns', 2),
-                new Ingredient('Patty', 1),
-            ])
-    ];
+    // private recipes: Recipe[] = [
+    //     new Recipe(
+    //         "Test recipe",
+    //         "This is simply a test",
+    //         "https://thebrilliantkitchen.com/wp-content/uploads/2023/02/Crockpot-Keto-Meatloaf-1.jpeg.webp",
+    //         [
+    //             new Ingredient('Meat', 1),
+    //             new Ingredient('French fries', 20),
+    //         ]),
+    //     new Recipe(
+    //         "Another Test recipe",
+    //         "This is simply a test",
+    //         "https://thebrilliantkitchen.com/wp-content/uploads/2023/02/Crockpot-Keto-Meatloaf-1.jpeg.webp",
+    //         [
+    //             new Ingredient('Buns', 2),
+    //             new Ingredient('Patty', 1),
+    //         ])
+    // ];
+    private recipes: Recipe[] = [];
+
+    setRecipes(recipes: Recipe[]){
+        this.recipes = recipes;
+        this.recipesChanged.next(this.recipes.slice());
+    }
 
     getRecipes(){
         return this.recipes.slice();
